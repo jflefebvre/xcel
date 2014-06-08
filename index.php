@@ -1,4 +1,15 @@
-<?php include 'config.inc.php'; ?>
+<?php 
+
+/**
+ * xcel : A simple data import script from excel copy and paste. Inspired by a MailChimp feature.
+ *
+ * @author    Jean-François Lefebvre <lefebvre.jf at gmail dot com>
+ * @license   MIT License
+ */
+
+include 'config.inc.php'; 
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
