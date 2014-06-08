@@ -28,12 +28,14 @@ The minified css/js will be used if $prod = true in the config file.
 Pretty straightforward.
 
 In step 1 :
-	
+
+[[/xcel/images/doc_step1.jpg]]	
 Copy and paste from excel several lines of data in the textarea.
 Click Upload.
 
 In step 2 :
 
+[[/xcel/images/doc_step2.jpg]]
 For each column, the select bow displays the fields existing for the table specified
 in the $config['table'] : map your fields as wanted.
 Click import.
