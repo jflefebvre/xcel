@@ -29,13 +29,15 @@ Pretty straightforward.
 
 In step 1 :
 
-[[/images/doc_step1.jpg]]	
+![Step 1](https://github.com/jflefebvre/xcel/blob/master/images/doc_step1.jpg "")
+
 Copy and paste from excel several lines of data in the textarea.
 Click Upload.
 
 In step 2 :
 
-[[/images/doc_step2.jpg]]
+![Step 2](https://github.com/jflefebvre/xcel/blob/master/images/doc_step2.jpg "")
+
 For each column, the select bow displays the fields existing for the table specified
 in the $config['table'] : map your fields as wanted.
 Click import.
