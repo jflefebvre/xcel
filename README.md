@@ -38,8 +38,6 @@ In step 2 :
 
 ![Step 2](https://raw.githubusercontent.com/jflefebvre/xcel/master/images/doc_step2.jpg "")
 
-For each column, the select bow displays the fields existing for the table specified
+For each column, the select displays the fields existing for the table specified
 in the $config['table'] : map your fields as wanted.
 Click import.
-
-The data are imported.
