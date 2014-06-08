@@ -143,7 +143,7 @@ switch($step) {
             $fields = $_POST['field'];
      
             $infos = getTableInfo();
-            // var_dump($infos);die();
+
             $tableInfos = array();
             foreach ($infos as $row) {
                 $tableInfos[] = $row;
@@ -161,10 +161,6 @@ switch($step) {
                 }
             }
             
-            //var_dump($fields);
-            //var_dump($fieldsIsString);
-            //die();
-
             $data = $_POST['data'];
             $data = unserialize(base64_decode($data));
     
@@ -195,12 +191,7 @@ switch($step) {
             }
             $sql .= ';';
             
-            // echo '<pre>' . $sql . '</pre>';
-            // echo 'import data';
-
             global $config;
-
-            $infos = null;
 
             try {
 
