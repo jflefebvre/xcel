@@ -155,7 +155,7 @@ switch($step) {
             }
 
             // Build sql query             
-            $sql = 'insert into ' . $config['table'] . '(' . implode($fields, ',') . ') values ';
+            $sql = 'insert into ' . $config['table'] . '(' . implode(',', $fields) . ') values ';
                        
             $insert_values = array();
             $question_marks = array();
