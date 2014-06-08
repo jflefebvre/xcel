@@ -142,69 +142,55 @@ switch($step) {
     
             $fields = $_POST['field'];
      
-            $infos = getTableInfo();
-
-            $tableInfos = array();
-            foreach ($infos as $row) {
-                $tableInfos[] = $row;
-            }
-
-            // build an array to check later if a field is a string 
-            $fieldsIsString = array();
-            foreach ($fields as $field) {
-              
-                foreach ($tableInfos as $row) {
-                    
-                    if ($row[0] === $field) {
-                        $fieldsIsString[] = (strpos($row[1], 'varchar')!==FALSE) ? 1 : 0;
-                    }
-                }
-            }
-            
             $data = $_POST['data'];
             $data = unserialize(base64_decode($data));
-    
+
+            function question_mark($data) {
+                
+                $question_marks = array();
+                foreach ($data as $item) {
+                    $question_marks[] = '?';
+                }
+                return '(' . implode(',', $question_marks) . ')';
+            }
+
             // Build sql query             
             $sql = 'insert into ' . $config['table'] . '(' . implode($fields, ',') . ') values ';
-            $idx = 0;
-            foreach ($data as $row) {
-                if ($idx>0) {
-                    $sql .= ',';
-                }
+                       
+            $insert_values = array();
+            $question_marks = array();
 
-                $sql .= '(';
-                $idx2 = 0;
-                foreach ($row as $index=>$value) {
-                    if ($idx2>0) {
-                        $sql .= ',';
-                    }   
-                    // must add ' if fields[$index] is of type string
-                    if ($fieldsIsString[$index]) {
-                        $sql .= "'" . $value . "'"; 
-                    } else {
-                        $sql .= $value; 
-                    }
-                    $idx2++;
-                }
-                $sql .= ')';
-                $idx++;
+            // build a single line of question marks
+            $question_mark = question_mark($data[0]); 
+            foreach ($data as $row) {
+                $insert_values = array_merge($insert_values, array_values($row));
+                $question_marks[] = $question_mark;
             }
-            $sql .= ';';
+
+            $sql .= implode(',', $question_marks);
             
             global $config;
 
+            $dbh = new PDO('mysql:host='.$config['host'].';dbname='.$config['database'], $config['username'], $config['password']);
+            $dbh->beginTransaction();
+            $stmt = $dbh->prepare($sql);
+
             try {
 
-                $dbh = new PDO('mysql:host='.$config['host'].';dbname='.$config['database'], $config['username'], $config['password']);
-                $count = $dbh->exec($sql);
-                $dbh = null;
-                echo '<div>' . $count . ' elements inserted successfully ! :)</div>';
+                $res = $stmt->execute($insert_values);
 
             } catch (PDOException $e) {
                 print "Error!: " . $e->getMessage() . "<br/>";
                 die();
             }
 
+            $dbh = null;
+
+            if ($res) {
+                echo '<div>Elements inserted successfully ! :)</div>';
+            } 
+
+            $dbh->commit();
 
         break;
 
