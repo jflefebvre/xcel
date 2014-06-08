@@ -29,13 +29,13 @@ Pretty straightforward.
 
 In step 1 :
 	
-	Copy and paste from excel several lines of data in the textarea.
-	Click Upload.
+Copy and paste from excel several lines of data in the textarea.
+Click Upload.
 
 In step 2 :
 
-	For each column, the select bow displays the fields existing for the table specified
-	in the $config['table'] : map your fields as wanted.
-	Click import.
+For each column, the select bow displays the fields existing for the table specified
+in the $config['table'] : map your fields as wanted.
+Click import.
 
 The data are imported.
