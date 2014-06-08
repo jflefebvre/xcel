@@ -1,4 +1,4 @@
-config.inc.default.php
+config.inc.php
 samples/*
 css/xcel.min.css
 js/xcel.min.js
